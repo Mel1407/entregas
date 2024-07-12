@@ -7,7 +7,6 @@ import productsRoutes from "./routes/products.routes.js";
 import cartsRoutes from "./routes/carts.routes.js";
 import { Server } from "socket.io";
 import viewsRoutes from "./routes/views.routes.js";
-import { productManager } from "./managers/productManager.js";
 import { allowInsecurePrototypeAccess } from "@handlebars/allow-prototype-access";
 
 const app = express();
@@ -51,7 +50,7 @@ io.on("connection", (socket) => {
 //Mongo DB configuración
 
 mongoose
-  .connect("mongodb://localhost:27017/")
+  .connect("mongodb://localhost:27017/carrito")
   .then(() => {
     console.log("MongoDB connected");
   })

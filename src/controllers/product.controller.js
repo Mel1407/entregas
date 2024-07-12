@@ -1,4 +1,7 @@
-import {productService} from "../services/product.service.js"
+import { productService } from "../services/product.service.js"
+import { Router } from "express";
+
+const router = Router();
 
 class productController{
 

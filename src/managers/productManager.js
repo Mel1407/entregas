@@ -26,6 +26,7 @@ class ProductManager {
       !product.stock
     ) {
       console.log("Todos los campos son obligatorios");
+
       throw new Error("Todos los campos son obligatorios");
     }
 
