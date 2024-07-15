@@ -1,7 +1,7 @@
 import { Schema, model } from "mongoose";
 import mongoosePaginate from "mongoose-paginate-v2";
 
-const cartSchema = new cartSchema({
+const cartSchema = new Schema({
   products: {
     type: [
       {
@@ -22,3 +22,5 @@ const cartSchema = new cartSchema({
 cartSchema.plugin(mongoosePaginate);
 
 export const cartModel = model("cart", cartSchema);
+
+cartModel.paginate({}, { page: 1, limit: 10 });

@@ -1,5 +1,5 @@
 import express from "express";
-import __dirname from "./dirname.js";
+import __dirname from "./utils/dirname.js";
 import mongoose from "mongoose";
 import Handlebars from "handlebars";
 import handlebars from "express-handlebars";
@@ -45,7 +45,7 @@ export const io = new Server(server);
 io.on("connection", (socket) => {
   console.log("Nuevo cliente conectado", socket.id);
   socket.emit("products", productManager);
-});
+  socket.emit("carts", cartManager);
 
 //Mongo DB configuración
 

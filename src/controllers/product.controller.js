@@ -7,9 +7,10 @@ class productController{
 
   //Se obtienen todos los productos
   async getAll(req, res){
+    const {page, limit} = req.query;
     try{
-      const product = await productService.getAll();
-      res.status(200).json(product);
+      const product = await productService.paginate({}, {page: 1, limit: 10});
+      res.render("product", {product});
     } catch (error) {
       res.status(500).json({message: error.message});
     }

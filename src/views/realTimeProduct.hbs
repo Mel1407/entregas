@@ -1,18 +1,61 @@
-<h1>
-  Vista de productos en tiempo real
-</h1>
+<div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Title</th>
+        <th scope="col">description</th>
+        <th scope="col">Price</th>
+        <th scope="col">Thumbnails</th>
+        <th scope="col">code</th>
+        <th scope="col">Stock</th>
+        <th scope="col">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each products.docs}}
+        <tr>
+          <td> {{this.id}}</td>
+          <td> {{this.title}}</td>
+          <td> {{this.description}}</td>
+          <td> {{this.price}}</td>
+          <td> {{this.category}}</td>
+          <td> {{this.thumbnail}}</td>
+          <td> {{this.code}}</td>
+          <td> {{this.stock}}</td>
+          <td> {{this.status}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
 
-<table>
-  <thead>
-    <tr>
-      <th>Id</th>
-      <th>Titulo</th>
-      <th>Precio</th>
-    </tr>
-  </thead>
-  <tbody>
-  </tbody>
-</table>
+  </table>
+  <div class="position-relative m-4">
 
-<script src="/socket.io/socket.io.js"></script>
-<script src="/js/main.js"></script>
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        {{#if products.hasPrevPage}}
+          <li class="page-item">
+            <a class="page-link" href="/?page={{products.prevPage}}&&limit=10">
+              Previous
+            </a>
+          </li>
+        {{/if}}
+
+        {{! Links a siguientes páginas }}
+
+        {{#if students.hasNextPage}}
+          <li class="page-item"><a
+              class="page-link"
+              href="/?page={{products.nextPage}}&&limit=10"
+            >Next</a></li>
+        {{/if}}
+
+      </ul>
+    </nav>
+    <p class="btn btn-primary">
+      Current Page:
+      {{products.page}}
+    </p>
+  </div>
+
+</div>
